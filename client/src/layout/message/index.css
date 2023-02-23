@@ -1,0 +1,7 @@
+.MessageLayout {
+    --width : auto;
+    display: flex;
+    flex-grow: 1;
+    width: var(--width);
+    background-color:rgb(208, 124, 124);
+}

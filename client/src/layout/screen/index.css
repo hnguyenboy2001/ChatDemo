@@ -1,0 +1,6 @@
+.ScreenLayout {
+    --width : 360px;
+    display: flex;
+    width: var(--width);
+    background-color:bisque;
+}

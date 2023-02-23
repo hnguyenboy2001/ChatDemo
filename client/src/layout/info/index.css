@@ -1,0 +1,7 @@
+
+.InfoLayout {
+    --width : 380px;
+    display: flex;
+    width: var(--width);
+    background-color: rgb(212, 208, 108);
+}

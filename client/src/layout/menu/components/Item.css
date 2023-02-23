@@ -1,0 +1,21 @@
+.Item {
+    --width: 73%;
+    /* --height:50px; */
+
+    width: var(--width);
+    /* height: var(--height); */
+    background-color: none;
+    display: flex;
+    aspect-ratio : 1 / 1;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+.Item:hover{
+    background-color: #f5f5f5;
+}
+.Item a {
+    display:block;
+    background-color:red;
+}
