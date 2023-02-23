@@ -1,23 +1,37 @@
 import React from "react";
 import "./index.css";
 import Item from "./components/Item";
-import { HiChat } from "react-icons/hi";
+import { HiChatAlt2, HiChat, HiUserGroup } from "react-icons/hi";
+import "./index.css";
 
 export default class MenuLayout extends React.Component {
   render() {
-    const iconSize = "25px"
     return (
       <div className="MenuLayout">
         {this.props.Label}
+
+        {/*Chat with frient Item*/}
         <Item
-          hrefItem={"https://cvnl.app/"}
-          Icon={<HiChat size={iconSize} color={"black"} />}
+          hrefItem={"#"}
+          Icon={<HiChatAlt2 />}
+          activeInit 
         ></Item>
-        <Item></Item>
-        <Item></Item>
-        <Item></Item>
-        <Item></Item>
+
+        {/*Group Item*/}
+        <Item
+          hrefItem={"#"}
+          Icon={<HiUserGroup />}
+        ></Item>
+
+        {/*Chat spam Item*/}
+        <Item
+          hrefItem={"#"}
+          Icon={<HiChat/>}
+        ></Item>
       </div>
     );
   }
+}
+MenuLayout.defaultProps = {
+  Label : null
 }

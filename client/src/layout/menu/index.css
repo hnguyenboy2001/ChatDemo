@@ -3,7 +3,9 @@
     --width : 60px;
     display: flex;
     width: var(--width);
-    background-color: #ffffff;
     flex-direction: column;
     align-items: center;
+    background-color: var(--bgrColor);
+    border-right: var(--border);
+    padding-top: var(--padding-top);
 }

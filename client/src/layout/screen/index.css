@@ -2,5 +2,7 @@
     --width : 360px;
     display: flex;
     width: var(--width);
-    background-color:bisque;
+    background-color: var(--bgrColor);
+    border-right: var(--border);
+    padding-top: var(--padding-top);
 }

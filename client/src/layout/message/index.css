@@ -3,5 +3,6 @@
     display: flex;
     flex-grow: 1;
     width: var(--width);
-    background-color:rgb(208, 124, 124);
+    background-color: var(--bgrColor);
+    border-right: var(--border);
 }
