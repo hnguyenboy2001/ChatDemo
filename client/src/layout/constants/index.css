@@ -1,5 +1,8 @@
-:root{
-    --bgrColor: #ffffff;
-    --border: #efefef 1px solid;
-    --padding-top: 12px;
+:root {
+  --bgrColor: #ffffff;
+  --border: #efefef 1px solid;
+  --border-radius: 5px;
+  --padding-top: 12px;
+  --padding-left__MenuLayout: 10px;
+  --padding-right__MenuLayout: 10px;
 }
