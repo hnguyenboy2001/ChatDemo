@@ -16,7 +16,7 @@ export default function MenuLayout() {
           label={"Chats"}
           hrefItem={"#"}
           Icon={<HiChatAlt2 />}
-          pathItem={"/chats"}
+          pathItem={"/"}
         ></Item>
       </button>
 
@@ -24,10 +24,10 @@ export default function MenuLayout() {
       <button className="Menu--Item" onClick={handelItemClick(1)}>
         <Item
           activeItem={selected[1]}
-          label={"People"}
+          label={"Group"}
           hrefItem={"#"}
           Icon={<HiUserGroup />}
-          pathItem={"/people"}
+          pathItem={"/groups"}
         ></Item>
       </button>
 
