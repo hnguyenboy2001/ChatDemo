@@ -4,7 +4,5 @@
   width: var(--width);
   background-color: var(--bgrColor);
   border-right: var(--border);
-  padding-top: var(--padding-top);
   padding-left: var(--padding-left__MenuLayout);
-  padding-right: var(--padding-right__MenuLayout);
 }

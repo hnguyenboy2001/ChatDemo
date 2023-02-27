@@ -14,6 +14,7 @@ const io = new Server(server, {
   },
 });
 //--------------------------------------Handle-------------------------------
+const onlineUser = {};
 const connectedSockets = new Set();
 io.on("connection", (socket) => {
   connectedSockets.add(socket.id);
@@ -28,6 +29,19 @@ io.on("connection", (socket) => {
       `User connected AFTER disconect ! ------------ ${io.engine.clientsCount} ---------------: \n`,
       connectedSockets
     );
+  });
+  //------------------On from client--------------
+  socket.on("logged", (userId) => {
+    onlineUser[userId] = true;
+    console.log(userId + " đang online");
+  });
+  socket.on("loggout", (userId) => {
+    delete onlineUser[userId];
+  });
+  socket.on("getOnlineFriend-client", (friends) => {
+    const onlineFriends = friends.filter((friend) => onlineUser[friend]);
+    socket.emit("getOnlineFriend-server", onlineFriends);
+    console.log(onlineFriends);
   });
 });
 //--------------------------------------Connect server to port-------------------------------

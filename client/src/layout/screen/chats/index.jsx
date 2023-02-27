@@ -1,32 +1,57 @@
 import React from "react";
 import "./index.css";
 import Card from "./components/Card";
-import { useState } from "react";
 
-export default function ChatsScreen() {
-  const [selected, setSelected] = useState([true, false]);
+import { useState, useContext, useEffect } from "react";
+import { AppContext } from "../../../App";
+
+export default function ChatsScreen({ label }) {
+  const valueProvider = useContext(AppContext);
+  const dataUser = valueProvider.dataUser;
+  const friends = dataUser.friendsList;
+  const socket = valueProvider.socket;
+
+  const [selected, setSelected] = useState(
+    [true].concat(Array(friends.length - 1).fill(false))
+  );
+
+  const [onlineFriends, setOnlineFriends] = useState([]);
+  useEffect(() => {
+    socket.emit("getOnlineFriend-client", friends);
+    socket.on("getOnlineFriend-server", (onlineFriends) => {
+      setOnlineFriends(onlineFriends);
+    });
+    console.log("repet");
+  }, [socket, friends]);
+
   return (
     <div className="ChatsScreen">
-      <button className="ChatsScreen--Item" onClick={handelItemClick(0)}>
-        <Card
-          activeItem={selected[0]}
-          label={"User 1"}
-          hrefItem={"#"}
-          pathItem={"/chats"}
-          avatarSrc={
-            "https://genk.mediacdn.vn/2020/1/7/photo-1-1578368300431366420427.jpg"
-          }
-        ></Card>
-      </button>
-
-      <button className="ChatsScreen--Item" onClick={handelItemClick(1)}>
-        <Card
-          activeItem={selected[1]}
-          label={"User 2"}
-          hrefItem={"#"}
-          pathItem={"/chats"}
-        ></Card>
-      </button>
+      <div className="Header">
+        <h1 className="Header--Label">{label}</h1>
+      </div>
+      <div className="Container">
+        {friends.map((friendName, index) => {
+          return (
+            <div key={index} className="ChatsScreen--Item">
+              <button
+                className="ChatsScreen--Buton"
+                onClick={handelItemClick(index)}
+              >
+                <Card
+                  activeItem={selected[index]}
+                  label={friendName}
+                  hrefItem={"#"}
+                  pathItem={"/chats"}
+                  avatarSrc={
+                    "https://genk.mediacdn.vn/2020/1/7/photo-1-1578368300431366420427.jpg"
+                  }
+                  activeOnline={onlineFriends.includes(friendName)}
+                ></Card>
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
   function handelItemClick(index) {

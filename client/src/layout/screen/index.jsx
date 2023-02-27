@@ -8,7 +8,10 @@ export default function ScreenLayout() {
     <div className="ScreenLayout">
       <Routes>
         {/* This is screen Chats */}
-        <Route path="/chats" element={<ChatsScreen></ChatsScreen>} />
+        <Route
+          path="/chats"
+          element={<ChatsScreen label={"Chats"}></ChatsScreen>}
+        />
 
         {/* This is screen People */}
         <Route path="/groups" element={<div>Groups</div>} />

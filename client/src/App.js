@@ -19,6 +19,7 @@ function App() {
       setSocket(socketIO);
       setLoggedIn(status.isLogged);
       setDataUser(status.dataUser);
+      socketIO.emit("logged", status.dataUser.username);
     }
   };
   const handleLogout = async (isLogged) => {

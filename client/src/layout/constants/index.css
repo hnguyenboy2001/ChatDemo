@@ -3,9 +3,15 @@
   --border: #efefef 1px solid;
   --border-radius: 9px;
   --padding-top: 12px;
-  --padding-left__MenuLayout: 10px;
-  --padding-right__MenuLayout: 10px;
+  --padding-left__MenuLayout: 8px;
+  --padding-right__MenuLayout: 8px;
   --widthScreenLayout: 360px;
   --heightItem: 45px;
   --heightCard: 68px;
+  --bgrColorScroll: rgb(193, 193, 193);
+  --bgrColorScroll__hover: rgb(177, 174, 174);
+  --bgrColorItem__hover: #f3f3f3;
+  --bgrColorItem__active: #f7f7f7;
+  --bgrColorSignal: #5ad539;
+  --transparent: rgba(0, 0, 0, 0);
 }

@@ -3,10 +3,69 @@
   display: flex;
   flex-direction: column;
 }
+.Header {
+  --width: 100%;
+  /* --height:50px; */
+
+  width: var(--width);
+  height: calc(var(--heightItem) + var(--padding-top));
+  /* height: var(--height); */
+  display: flex;
+  /* aspect-ratio: 1 / 1; */
+  border-radius: var(--border-radius);
+  align-items: center;
+  padding: 0;
+}
+.Header--Label {
+  display: flex;
+  padding-left: 15px;
+  font-size: 25px;
+  margin: 0px;
+  text-align: center;
+}
+.Container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-self: flex-start;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  visibility: hidden;
+}
+
+.ChatsScreen--Item,
+.Container:hover,
+.Container:focus {
+  visibility: visible;
+}
+
+::-webkit-scrollbar {
+  width: 13px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bgrColor);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--bgrColorScroll);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--bgrColorScroll__hover);
+}
+
 .ChatsScreen--Item {
-  width: auto;
+  width: 100%;
   height: auto;
   padding: 0px;
   border-radius: var(--border-radius);
   border: none;
+}
+.ChatsScreen--Buton {
+  width: 100%;
+  border: none;
+  background-color: var(--bgrColor);
+  padding: 0px;
+  padding-right: var(--padding-right__MenuLayout);
 }
