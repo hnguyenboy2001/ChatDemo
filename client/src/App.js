@@ -1,21 +1,34 @@
 import "./App.css";
-import InfoLayout from "./layout/info";
-import MessageLayout from "./layout/message";
-import ScreenLayout from "./layout/screen";
-import MenuLayout from "./layout/menu";
 import "./layout/constants/index.css";
+
+import Home from "./layout";
+import MessageLoginForm from "./auth/login/MessageLoginForm";
+
+import { useState, createContext } from "react";
 import io from "socket.io-client";
 
 const socket = io.connect("http://localhost:8900");
+export const HomeContext = createContext();
 
 function App() {
-  socket.emit("TestEmit--client", "HelloServer");
+  socket.emit("SendTest--Client", "HelloServer");
+  const [loggedIn, setLoggedIn] = useState(false);
+  const handleLogin = (status) => {
+    setLoggedIn(status);
+  };
+  const handleLogout = (status) => {
+    setLoggedIn(status);
+  };
+
   return (
     <div className="App">
-      <MenuLayout Label="" />
-      <ScreenLayout Label="Screen Layout" />
-      <MessageLayout Label="Message Layout" />
-      <InfoLayout Label="Info Layout" />
+      {!loggedIn ? (
+        <MessageLoginForm onLogin={handleLogin}></MessageLoginForm>
+      ) : (
+        <HomeContext.Provider value={handleLogout}>
+          <Home onLogout={handleLogout}></Home>
+        </HomeContext.Provider>
+      )}
     </div>
   );
 }

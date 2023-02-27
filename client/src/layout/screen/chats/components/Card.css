@@ -1,9 +1,8 @@
-.Item {
+.Card {
   --width: 100%;
   /* --height:50px; */
-
   width: var(--width);
-  height: 45px;
+  height: var(--heightCard);
   /* height: var(--height); */
   background-color: var(--bgrColor);
   display: flex;
@@ -13,10 +12,12 @@
   align-items: center;
   padding: 0;
 }
-.Item:hover {
+.Card:hover {
   background-color: #f5f5f5d7;
 }
-.Item--Link {
+
+.Card--Link {
+  margin-left: 5px;
   display: flex;
   align-items: center;
   width: 100%;
@@ -24,21 +25,34 @@
   text-decoration: none;
 }
 
-.Label {
-  margin-left: 8px;
-  font-size: 13px;
+.Card--Avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.Avatar--Img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.Card--Info {
+  margin-left: 12px;
+}
+#Card--Label {
+  font-size: 15px;
   color: #3b3b3b;
   font-weight: bold;
 }
 
-.Icon {
+/* .Icon {
   padding-left: 12px;
   font-size: 25px;
   color: #65676b;
 }
 .ActiveIcon {
   color: black;
-}
+} */
 .ActiveItem {
   background-color: #f5f5f5;
 }

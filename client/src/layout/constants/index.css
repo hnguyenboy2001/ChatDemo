@@ -1,8 +1,11 @@
 :root {
   --bgrColor: #ffffff;
   --border: #efefef 1px solid;
-  --border-radius: 5px;
+  --border-radius: 9px;
   --padding-top: 12px;
   --padding-left__MenuLayout: 10px;
   --padding-right__MenuLayout: 10px;
+  --widthScreenLayout: 360px;
+  --heightItem: 45px;
+  --heightCard: 68px;
 }

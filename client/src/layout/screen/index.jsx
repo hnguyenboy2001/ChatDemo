@@ -1,13 +1,14 @@
 import React from "react";
 import "./index.css";
 import { Routes, Route } from "react-router-dom";
+import ChatsScreen from "./chats";
 
 export default function ScreenLayout() {
   return (
     <div className="ScreenLayout">
       <Routes>
         {/* This is screen Chats */}
-        <Route path="/" element={<div>Chats</div>} />
+        <Route path="/chats" element={<ChatsScreen></ChatsScreen>} />
 
         {/* This is screen People */}
         <Route path="/groups" element={<div>Groups</div>} />

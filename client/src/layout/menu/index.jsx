@@ -3,10 +3,12 @@ import "./index.css";
 import Item from "./components/Item";
 import { HiChatAlt2, HiChat, HiUserGroup } from "react-icons/hi";
 import "./index.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { HomeContext } from "../../App";
 
 export default function MenuLayout() {
   const [selected, setSelected] = useState([true, false, false]);
+  const handeLogout = useContext(HomeContext);
   return (
     <div className="MenuLayout">
       {/*Chats Item*/}
@@ -16,7 +18,7 @@ export default function MenuLayout() {
           label={"Chats"}
           hrefItem={"#"}
           Icon={<HiChatAlt2 />}
-          pathItem={"/"}
+          pathItem={"/chats"}
         ></Item>
       </button>
 
@@ -40,6 +42,14 @@ export default function MenuLayout() {
           Icon={<HiChat />}
           pathItem={"/request"}
         ></Item>
+      </button>
+
+      <button
+        onClick={() => {
+          handeLogout(false);
+        }}
+      >
+        Logout
       </button>
     </div>
   );

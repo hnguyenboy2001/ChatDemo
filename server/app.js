@@ -13,14 +13,24 @@ const io = new Server(server, {
     methods: ["GET", "POST"],
   },
 });
+//--------------------------------------Handle-------------------------------
+const connectedSockets = new Set();
 io.on("connection", (socket) => {
-  console.log("User connected ! : ", socket.id);
-
+  connectedSockets.add(socket.id);
+  console.log(
+    `User connected ! ------------ ${io.engine.clientsCount} ---------------: \n`,
+    connectedSockets
+  );
   socket.on("disconnect", () => {
     console.log("User Disconnected", socket.id);
+    connectedSockets.delete(socket.id);
+    console.log(
+      `User connected AFTER disconect ! ------------ ${io.engine.clientsCount} ---------------: \n`,
+      connectedSockets
+    );
   });
 });
-
+//--------------------------------------Connect server to port-------------------------------
 var runServer = server.listen(8900, "localhost", () => {
   var host = runServer.address().address;
   var port = runServer.address().port;

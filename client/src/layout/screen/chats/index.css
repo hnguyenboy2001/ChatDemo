@@ -1,0 +1,12 @@
+.ChatsScreen {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.ChatsScreen--Item {
+  width: auto;
+  height: auto;
+  padding: 0px;
+  border-radius: var(--border-radius);
+  border: none;
+}
