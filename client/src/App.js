@@ -7,29 +7,39 @@ import MessageLoginForm from "./auth/login/MessageLoginForm";
 import { useState, createContext } from "react";
 import io from "socket.io-client";
 
-const socket = io.connect("http://localhost:8900");
-export const HomeContext = createContext();
+export const AppContext = createContext();
 
 function App() {
-  socket.emit("SendTest--Client", "HelloServer");
   const [loggedIn, setLoggedIn] = useState(false);
-  const handleLogin = (status) => {
-    setLoggedIn(status);
+  const [dataUser, setDataUser] = useState({});
+  const [socket, setSocket] = useState(null);
+  const handleLogin = async (status) => {
+    if (status.isLogged) {
+      const socketIO = await io.connect("http://localhost:8900");
+      setSocket(socketIO);
+      setLoggedIn(status.isLogged);
+      setDataUser(status.dataUser);
+    }
   };
-  const handleLogout = (status) => {
-    setLoggedIn(status);
+  const handleLogout = async (isLogged) => {
+    if (socket) {
+      await socket.disconnect();
+      setLoggedIn(isLogged);
+    }
   };
 
+  const valueProvider = {
+    handleLogin: handleLogin,
+    handleLogout: handleLogout,
+    socket: socket,
+    dataUser: dataUser,
+  };
   return (
-    <div className="App">
-      {!loggedIn ? (
-        <MessageLoginForm onLogin={handleLogin}></MessageLoginForm>
-      ) : (
-        <HomeContext.Provider value={handleLogout}>
-          <Home onLogout={handleLogout}></Home>
-        </HomeContext.Provider>
-      )}
-    </div>
+    <AppContext.Provider value={valueProvider}>
+      <div className="App">
+        {!loggedIn ? <MessageLoginForm></MessageLoginForm> : <Home></Home>}
+      </div>
+    </AppContext.Provider>
   );
 }
 

@@ -1,16 +1,30 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useContext } from "react";
 import "./MessageLoginForm.css";
+import { AppContext } from "../../App";
 
-function MessageLoginForm({ onLogin }) {
+function MessageLoginForm() {
+  const valueProvider = useContext(AppContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event) => {
+  async function getStatus() {
+    const isLogged = true;
+    const dataUser = {
+      username: email,
+      password: password,
+    };
+    return {
+      isLogged: isLogged,
+      dataUser: dataUser,
+    };
+  }
+  async function handleSubmit(event) {
+    const status = await getStatus();
+    valueProvider.handleLogin(status);
+
     event.preventDefault();
     // Validate email and password here
-    onLogin(true);
-  };
+  }
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -53,9 +67,5 @@ function MessageLoginForm({ onLogin }) {
     </div>
   );
 }
-
-MessageLoginForm.propTypes = {
-  onLogin: PropTypes.func.isRequired,
-};
 
 export default MessageLoginForm;

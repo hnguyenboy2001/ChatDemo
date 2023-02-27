@@ -4,11 +4,11 @@ import Item from "./components/Item";
 import { HiChatAlt2, HiChat, HiUserGroup } from "react-icons/hi";
 import "./index.css";
 import { useState, useContext } from "react";
-import { HomeContext } from "../../App";
+import { AppContext } from "../../App";
 
 export default function MenuLayout() {
   const [selected, setSelected] = useState([true, false, false]);
-  const handeLogout = useContext(HomeContext);
+  const valueProvider = useContext(AppContext);
   return (
     <div className="MenuLayout">
       {/*Chats Item*/}
@@ -46,7 +46,7 @@ export default function MenuLayout() {
 
       <button
         onClick={() => {
-          handeLogout(false);
+          valueProvider.handleLogout(false);
         }}
       >
         Logout
